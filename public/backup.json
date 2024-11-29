@@ -1,0 +1,83 @@
+{
+  "following": [
+    ["Alice Brown", "alicebrown"],
+    ["Bob Johnson", "bobjohnson"],
+    ["Charlie Davis", "charliedavis"],
+    ["Dana Lee", "danalee"],
+    ["Evan Taylor", "evantaylor"]
+  ],
+  "likes": [
+    {
+      "id": "1",
+      "text": "A stunning view of the Milky Way! 🌌",
+      "created_at": "2023-11-01T08:00:00Z",
+      "user": {
+        "id": "user1",
+        "screen_name": "spaceenthusiast"
+      },
+      "media_download_links": [
+        {
+          "type": "photo",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Milky_Way_Arch.jpg"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "text": "Exploring the underwater world. 🐠",
+      "created_at": "2023-11-02T19:30:00Z",
+      "user": {
+        "id": "user2",
+        "screen_name": "divinglife"
+      },
+      "media_download_links": [
+        {
+          "type": "photo",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Coral_reef.jpg"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "text": "Check out this mesmerizing aurora borealis!",
+      "created_at": "2023-11-03T10:00:00Z",
+      "user": {
+        "id": "user3",
+        "screen_name": "northernlights"
+      },
+      "media_download_links": [
+        {
+          "type": "photo",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Northern_Lights_%28Aurora_borealis%29.jpg"
+        }
+      ]
+    }
+  ],
+  "bookmarks": [
+    {
+      "id": "4",
+      "text": "This animation explains quantum mechanics really well!",
+      "created_at": "2023-11-05T21:00:00Z",
+      "user": {
+        "id": "user4",
+        "screen_name": "scienceisfun"
+      },
+      "media_download_links": [
+        {
+          "type": "video",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/4b/Einstein%27s_relativity_theory_demonstrated.ogv/Einstein%27s_relativity_theory_demonstrated.ogv.480p.webm"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "text": "Here’s a guide to making homemade sourdough bread.",
+      "created_at": "2023-11-06T10:30:00Z",
+      "user": {
+        "id": "user5",
+        "screen_name": "bakingtips"
+      }
+    }
+  ],
+  "last_updated": "2023-11-15T12:00:00Z"
+}
