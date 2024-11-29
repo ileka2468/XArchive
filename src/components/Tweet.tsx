@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { Tweet as TweetType } from "../types/twitter";
 import { MediaViewer } from "./MediaViewer";
 import { Calendar } from "lucide-react";

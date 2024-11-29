@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { TwitterBackup, Tweet } from "./types/twitter";
+import { useState, useEffect, useMemo } from "react";
+import { TwitterBackup } from "./types/twitter";
 import { TweetList } from "./components/TweetList";
 import { Following } from "./components/Following";
 import { SearchBar } from "./components/SearchBar";

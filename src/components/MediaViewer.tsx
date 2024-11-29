@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, memo } from "react";
+import { useState, useRef, useEffect, memo } from "react";
 import { MediaDownloadLink } from "../types/twitter";
 
 interface MediaViewerProps {
@@ -9,22 +9,19 @@ export const MediaViewer = memo(function MediaViewer({
   media,
 }: MediaViewerProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [isInViewport, setIsInViewport] = useState(false);
   const [hasError, setHasError] = useState(false);
   const mediaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsInViewport(true);
-          // Delay setting `isVisible` to prevent sudden swapping
-          setTimeout(() => setIsVisible(true), 0);
+        if (entry.isIntersecting) {
+          setIsVisible(true);
         }
       },
       {
-        threshold: 0.1, // Lower threshold to trigger visibility sooner
-        rootMargin: "1000px", // Increased root margin for earlier loading
+        threshold: 0.1,
+        rootMargin: "100px",
       }
     );
 
@@ -35,7 +32,7 @@ export const MediaViewer = memo(function MediaViewer({
     return () => {
       intersectionObserver.disconnect();
     };
-  }, []); // Removed isVisible from dependencies
+  }, []);
 
   if (media.type === "photo") {
     return (
@@ -60,7 +57,7 @@ export const MediaViewer = memo(function MediaViewer({
 
   return (
     <div ref={mediaRef} className="rounded-lg overflow-hidden bg-gray-100">
-      {isVisible && isInViewport && !hasError ? (
+      {isVisible && !hasError ? (
         <video
           controls
           className="w-full h-auto"
