@@ -1,5 +1,4 @@
-import React from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, X } from "lucide-react";
 
 interface SearchBarProps {
   searchTerm: string;
@@ -19,7 +18,7 @@ export function SearchBar({ searchTerm, onSearchChange }: SearchBarProps) {
       />
       {searchTerm && (
         <button
-          onClick={() => onSearchChange('')}
+          onClick={() => onSearchChange("")}
           className="absolute right-3 top-1/2 -translate-y-1/2"
         >
           <X className="w-5 h-5 text-gray-400 hover:text-gray-600" />

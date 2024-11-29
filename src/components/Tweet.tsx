@@ -29,7 +29,7 @@ export const Tweet = memo(function Tweet({ tweet }: TweetProps) {
 
       <p className="text-gray-800 mb-3 whitespace-pre-wrap">{tweet.text}</p>
 
-      {tweet.media_download_links && (
+      {tweet.media_download_links && tweet.media_download_links.length > 0 && (
         <div className="grid gap-2">
           {tweet.media_download_links.map((media, index) => (
             <MediaViewer key={`${tweet.id}-${index}`} media={media} />

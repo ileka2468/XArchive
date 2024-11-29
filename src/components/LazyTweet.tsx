@@ -36,11 +36,7 @@ const LazyTweet: React.FC<LazyTweetProps> = ({ tweet }) => {
     };
   }, []);
 
-  return (
-    <div ref={tweetRef} style={{ minHeight: "200px" }}>
-      {isVisible && <Tweet tweet={tweet} />}
-    </div>
-  );
+  return <div ref={tweetRef}>{isVisible && <Tweet tweet={tweet} />}</div>;
 };
 
 export default LazyTweet;
