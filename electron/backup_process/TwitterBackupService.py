@@ -176,7 +176,7 @@ class TwitterBackupService:
             "user": {
                 "id": tweet.user.id,
                 "screen_name": tweet.user.screen_name,
-                "pfp_url": tweet.user.profile_image_url
+                "profile_image_url": tweet.user.profile_image_url
             }
         }
 
