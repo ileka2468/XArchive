@@ -190,7 +190,8 @@ class TwitterBackupService:
             "created_at": tweet.created_at,
             "user": {
                 "id": tweet.user.id,
-                "screen_name": tweet.user.screen_name
+                "screen_name": tweet.user.screen_name,
+                "profile_image_url": tweet.user.profile_image_url
             }
         }
 
