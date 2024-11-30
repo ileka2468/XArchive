@@ -1,14 +1,18 @@
 import { useState, useEffect, useMemo } from "react";
 import { TwitterBackup } from "./types/twitter";
 import { TweetList } from "./components/TweetList";
-import { Following } from "./components/Following";
 import { SearchBar } from "./components/SearchBar";
 import { BookmarkIcon, Heart, RefreshCw } from "lucide-react";
 import { validateTwitterBackup } from "./utils/jsonValidator";
+import Sidebar from "./components/Sidebar";
+import BackupManager from "./components/BackupManager";
+
+type ActiveTab = "media-viewer" | "backup-manager" | "likes" | "bookmarks";
 
 function App() {
   const [data, setData] = useState<TwitterBackup | null>(null);
-  const [activeTab, setActiveTab] = useState<"likes" | "bookmarks">("likes");
+  const [activeTab, setActiveTab] = useState<ActiveTab>("media-viewer");
+  const [subTab, setSubTab] = useState<"likes" | "bookmarks">("likes");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
@@ -63,8 +67,7 @@ function App() {
 
   const filteredTweets = useMemo(() => {
     if (!data) return [];
-
-    const tweets = data[activeTab];
+    const tweets = data[subTab];
     return tweets.filter((tweet) => {
       const matchesUser =
         !selectedUser || tweet.user.screen_name === selectedUser;
@@ -78,7 +81,7 @@ function App() {
 
       return matchesUser && matchesSearch;
     });
-  }, [data, activeTab, selectedUser, searchTerm]);
+  }, [data, subTab, selectedUser, searchTerm]);
 
   if (!isAuthenticated) {
     return (
@@ -126,58 +129,60 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            Twitter Backup Viewer
-          </h1>
-          <div className="flex flex-col sm:flex-row gap-4 mb-4">
-            <button
-              onClick={() => setActiveTab("likes")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors flex-1 justify-center sm:justify-start ${
-                activeTab === "likes"
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              <Heart size={20} />
-              Likes ({data.likes.length})
-            </button>
-            <button
-              onClick={() => setActiveTab("bookmarks")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors flex-1 justify-center sm:justify-start ${
-                activeTab === "bookmarks"
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              <BookmarkIcon size={20} />
-              Bookmarks ({data.bookmarks.length})
-            </button>
+    <div className="flex">
+      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <div className="flex-1">
+        {activeTab === "media-viewer" ? (
+          <div>
+            <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+              <div className="max-w-6xl mx-auto px-4 py-4">
+                <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                  Twitter Backup Viewer
+                </h1>
+                <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                  <button
+                    onClick={() => setSubTab("likes")}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors flex-1 justify-center sm:justify-start ${
+                      subTab === "likes"
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    <Heart size={20} />
+                    Likes ({data.likes.length})
+                  </button>
+                  <button
+                    onClick={() => setSubTab("bookmarks")}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors flex-1 justify-center sm:justify-start ${
+                      subTab === "bookmarks"
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    <BookmarkIcon size={20} />
+                    Bookmarks ({data.bookmarks.length})
+                  </button>
+                </div>
+                <SearchBar
+                  searchTerm={searchTerm}
+                  onSearchChange={setSearchTerm}
+                />
+              </div>
+            </header>
+            <main className="max-w-6xl mx-auto px-4 py-8 space-y-8">
+              <TweetList
+                tweets={filteredTweets}
+                title={`${subTab.charAt(0).toUpperCase() + subTab.slice(1)}`}
+              />
+              <footer className="text-center text-sm text-gray-500 pt-8">
+                Last updated: {new Date(data.last_updated).toLocaleString()}
+              </footer>
+            </main>
           </div>
-          <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-        </div>
-      </header>
-
-      <main className="max-w-6xl mx-auto px-4 py-8 space-y-8">
-        <Following
-          following={data.following}
-          onSelectUser={setSelectedUser}
-          selectedUser={selectedUser}
-        />
-
-        <TweetList
-          tweets={filteredTweets}
-          title={`${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} ${
-            selectedUser ? `from @${selectedUser}` : ""
-          }`}
-        />
-
-        <footer className="text-center text-sm text-gray-500 pt-8">
-          Last updated: {new Date(data.last_updated).toLocaleString()}
-        </footer>
-      </main>
+        ) : (
+          <BackupManager />
+        )}
+      </div>
     </div>
   );
 }

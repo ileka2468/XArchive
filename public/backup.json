@@ -1,0 +1,112 @@
+{
+    "following": [
+        [
+            "44196397",
+            "elonmusk"
+        ],
+        [
+            "15411797",
+            "charlieINTEL"
+        ]
+    ],
+    "likes": [
+        {
+            "id": "1862365477382595046",
+            "text": "Not anymore \u2026",
+            "created_at": "Fri Nov 29 05:18:25 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk"
+            }
+        },
+        {
+            "id": "1862366686378168775",
+            "text": "Yes",
+            "created_at": "Fri Nov 29 05:23:13 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk"
+            }
+        },
+        {
+            "id": "1862367708157026317",
+            "text": "\u201cWe're going to be very open and transparent and be very clear about this is what we're doing [with the Department of Government Efficiency], here are the issues, this is the math for what's being spent. \u201c\nElon Musk https://t.co/O9Tmz4TrzJ",
+            "created_at": "Fri Nov 29 05:27:17 +0000 2024",
+            "user": {
+                "id": "1016059981907386368",
+                "screen_name": "teslaownersSV"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/ext_tw_video/1856541405717368833/pu/vid/avc1/1920x1080/N_Dy6Gp0wlcxszgY.mp4?tag=14"
+                }
+            ]
+        },
+        {
+            "id": "1862419875681194097",
+            "text": "\u2728\ud83e\uddf5 Here's a thread with content from various xAI employees on X, and why you might value following them!\n\nI also want to have a list of fans posting about Grok\u2014please drop handles or links to posts in the comments! \ud83d\ude42",
+            "created_at": "Fri Nov 29 08:54:35 +0000 2024",
+            "user": {
+                "id": "1264901941",
+                "screen_name": "matiroy9"
+            }
+        },
+        {
+            "id": "1862482881605419310",
+            "text": "It was a coordinated sychological operation \n https://t.co/tNStihsjcU",
+            "created_at": "Fri Nov 29 13:04:56 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/ext_tw_video/1862464845372645376/pu/vid/avc1/1920x1080/pl6LybxR1qxHJW8c.mp4?tag=14"
+                }
+            ]
+        },
+        {
+            "id": "1862331915337945516",
+            "text": "\ud83c\uddfa\ud83c\uddf8Hope you had a great Thanksgiving!\ud83c\uddfa\ud83c\uddf8",
+            "created_at": "Fri Nov 29 03:05:03 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk"
+            }
+        },
+        {
+            "id": "1861983364351463537",
+            "text": "In the blink of an eye, lives changed.\n\nThese 12 photos were taken before it all fell apart. \ud83d\ude1e\ud83e\uddf5 https://t.co/qtwzbKjutc",
+            "created_at": "Thu Nov 28 04:00:02 +0000 2024",
+            "user": {
+                "id": "1809197135969255424",
+                "screen_name": "AI_GuruX"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdcYAJ0bIAAid7N.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862168974756335860",
+            "text": "https://t.co/LoeugQQXOI",
+            "created_at": "Thu Nov 28 16:17:35 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdfA0Apa8AARrph.jpg"
+                }
+            ]
+        }
+    ],
+    "bookmarks": [],
+    "last_updated": "2024-11-29T21:37:26.260634"
+}
