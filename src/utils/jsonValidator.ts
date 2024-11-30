@@ -1,4 +1,4 @@
-import { TwitterBackup, Tweet } from "../types/twitter";
+import { TwitterBackup } from "../types/twitter";
 
 export function validateTwitterBackup(data: unknown): {
   valid: boolean;

@@ -1,5 +1,5 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "xarchive",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +9,35 @@
     "build": "vite build && electron-builder",
     "lint": "eslint .",
     "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.xarchive.app",
+    "productName": "XArchive",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/",
+        "to": "assets/",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "icon": "assets/icon2.png"
+    },
+    "mac": {
+      "icon": "assets/icon2.png"
+    },
+    "linux": {
+      "icon": "assets/icon2.png"
+    }
   },
   "dependencies": {
     "lucide-react": "^0.344.0",

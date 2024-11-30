@@ -1,37 +1,17 @@
 import asyncio
 import json
-import logging
 import os
 import requests  # For Pushover notifications
 from datetime import datetime
 import twikit
 from twikit import Client, Capsolver
+from MessageBroker import MessageBroker
 
 MAX_COUNT = 5000
 LOG_FILE = "twitter_backup.log"
 PUSHOVER_USER_KEY = "uyawc5tru2ac6eq1rynfajyxe5eud3"
 PUSHOVER_API_TOKEN = "arh3tjv1ic29n1u7i255rzuya51qk4"
 PUSHOVER_DEVICE = "phone"
-
-def configure_logging():
-    # Configure logging
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
-
-    file_handler = logging.FileHandler(LOG_FILE)
-    file_handler.setLevel(logging.INFO)
-
-    stream_handler = logging.StreamHandler()
-    stream_handler.setLevel(logging.INFO)
-
-    formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
-    file_handler.setFormatter(formatter)
-    stream_handler.setFormatter(formatter)
-
-    logger.addHandler(file_handler)
-    logger.addHandler(stream_handler)
-
-    logging.info("Logging configured successfully.")
 
 def send_pushover_notification(title, message, priority=0, url=None, url_title=None):
     return # stop wasting my mf bandwidth while developing
@@ -52,12 +32,12 @@ def send_pushover_notification(title, message, priority=0, url=None, url_title=N
     try:
         response = requests.post("https://api.pushover.net/1/messages.json", data=payload)
         response.raise_for_status()
-        logging.info("Notification sent successfully.")
     except requests.RequestException as e:
-        logging.error(f"Failed to send notification: {e}")
+        pass
+        #self.broker.send_error(f"Failed to send notification: {e}")
 
 class TwitterBackupService:
-    def __init__(self, username, email, password, totp_secret=None):
+    def __init__(self, username, email, password, totp_secret=None, event_callback=None):
         self.capsolver = Capsolver(api_key="CAP-3900BD9D26EF9B########", max_attempts=10)
         self.client = Client(language='en-US', captcha_solver=self.capsolver, user_agent = 'Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion')
         self.username = username
@@ -65,6 +45,7 @@ class TwitterBackupService:
         self.user: twikit.User | None = None
         self.user_id = None
         self.backup_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'public', 'backup.json'))
+        self.event_callback = event_callback
         self.auth_info = {
             'auth_info_1': username,
             'auth_info_2': email,
@@ -77,18 +58,22 @@ class TwitterBackupService:
             "bookmarks": [],
             "last_updated": None
         }
+        self.configue_message_broker()
         self.load_backup_data()
-        configure_logging()
+        
+
+    def configue_message_broker(self):
+        self.broker = MessageBroker(self.event_callback)
 
     def load_backup_data(self):
         try:
             with open(self.backup_file_path, 'r') as f:
                 self.backup_data = json.load(f)
-            logging.info("Loaded existing backup data.")
+            self.broker.send_activity("Loaded existing backup data.")
         except FileNotFoundError:
-            logging.warning("No existing backup found, starting fresh.")
+            self.broker.send_activity("No existing backup found, starting fresh.")
         except Exception as e:
-            logging.error(f"Failed to load backup data: {e}")
+            self.broker.send_error(f"Failed to load backup data: {e}")
 
     async def login(self):
         try:
@@ -98,10 +83,10 @@ class TwitterBackupService:
                                     totp_secret=self.auth_info["totp_secret"])
             self.user = await self.client.get_user_by_screen_name(self.username)
             self.user_id = self.user.id
-            logging.info(f"Logged in successfully as {self.username}.")
+            self.broker.send_activity(f"Logged in successfully as {self.username}.")
             send_pushover_notification("TwitterBackupService", "Service started successfully.", priority=1)
         except Exception as e:
-            logging.error(f"Login failed: {e}")
+            self.broker.send_error(f"Login failed: {e}")
             send_pushover_notification("TwitterBackupService Error", f"Login failed: {e}", priority=2)
             raise
 
@@ -118,13 +103,13 @@ class TwitterBackupService:
                 following_users.append((user.id, user.screen_name))
             if following_users:
                 self.backup_data["following"] = following_users + self.backup_data["following"]
-                logging.info(f"Fetched {len(following_users)} new following users.")
+                self.broker.send_activity(f"Fetched {len(following_users)} new following users.")
                 for user in following_users:
                     send_pushover_notification("New Following", f"New follow: {user[1]}", priority=0, url=f"https://twitter.com/{user[1]}")
             else:
-                logging.info("No new following users found.")
+                self.broker.send_activity("No new following users found.")
         except Exception as e:
-            logging.error(f"Failed to fetch following: {e}")
+            self.broker.send_error(f"Failed to fetch following: {e}")
             send_pushover_notification("TwitterBackupService Error", f"Failed to fetch following: {e}", priority=2)
 
     async def fetch_likes(self):
@@ -142,7 +127,7 @@ class TwitterBackupService:
                 liked_tweets.append(self.tweet_to_dict(tweet))
             if liked_tweets:
                 self.backup_data["likes"] = liked_tweets + self.backup_data["likes"]
-                logging.info(f"Fetched {len(liked_tweets)} new liked tweets.")
+                self.broker.send_activity(f"Fetched {len(liked_tweets)} new liked tweets.")
                 for tweet in liked_tweets:
                     send_pushover_notification(
                         "New Like",
@@ -151,9 +136,9 @@ class TwitterBackupService:
                         url=f"https://twitter.com/{tweet['user']['screen_name']}/status/{tweet['id']}"
                     )
             else:
-                logging.info("No new liked tweets found.")
+                self.broker.send_activity("No new liked tweets found.")
         except Exception as e:
-            logging.error(f"Failed to fetch likes: {e}")
+            self.broker.send_error(f"Failed to fetch likes: {e}")
             send_pushover_notification("TwitterBackupService Error", f"Failed to fetch likes: {e}", priority=2)
 
     async def fetch_bookmarks(self):
@@ -169,7 +154,7 @@ class TwitterBackupService:
                 bookmarks.append(self.tweet_to_dict(tweet))
             if bookmarks:
                 self.backup_data["bookmarks"] = bookmarks + self.backup_data["bookmarks"]
-                logging.info(f"Fetched {len(bookmarks)} new bookmarks.")
+                self.broker.send_activity(f"Fetched {len(bookmarks)} new bookmarks.")
                 for tweet in bookmarks:
                     send_pushover_notification(
                         "New Bookmark",
@@ -178,9 +163,9 @@ class TwitterBackupService:
                         url=f"https://twitter.com/{tweet['user']['screen_name']}/status/{tweet['id']}"
                     )
             else:
-                logging.info("No new bookmarks found.")
+                self.broker.send_activity("No new bookmarks found.")
         except Exception as e:
-            logging.error(f"Failed to fetch bookmarks: {e}")
+            self.broker.send_error(f"Failed to fetch bookmarks: {e}")
             send_pushover_notification("TwitterBackupService Error", f"Failed to fetch bookmarks: {e}", priority=2)
 
     def tweet_to_dict(self, tweet):
@@ -190,7 +175,8 @@ class TwitterBackupService:
             "created_at": tweet.created_at,
             "user": {
                 "id": tweet.user.id,
-                "screen_name": tweet.user.screen_name
+                "screen_name": tweet.user.screen_name,
+                "pfp_url": tweet.user.profile_image_url
             }
         }
 
@@ -228,9 +214,9 @@ class TwitterBackupService:
             self.backup_data["last_updated"] = datetime.now().isoformat()
             with open(self.backup_file_path, 'w') as f:
                 json.dump(self.backup_data, f, indent=4)
-            logging.info(f"Backup updated at {self.backup_data['last_updated']}.")
+            self.broker.send_activity(f"Backup updated at {self.backup_data['last_updated']}.")
         except Exception as e:
-            logging.error(f"Failed to update backup: {e}")
+            self.broker.send_error(f"Failed to update backup: {e}")
             send_pushover_notification("TwitterBackupService Error", f"Failed to update backup: {e}", priority=2)
 
     async def run_backup_service(self):
@@ -239,7 +225,7 @@ class TwitterBackupService:
             try:
                 await self.update_backup()
             except Exception as e:
-                logging.error(f"Error during backup update: {e}")
+                self.broker.send_error(f"Error during backup update: {e}")
                 send_pushover_notification("TwitterBackupService Error", f"Error during backup update: {e}", priority=2)
             await asyncio.sleep(5)
 
