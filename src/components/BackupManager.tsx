@@ -33,12 +33,12 @@ const BackupManager: React.FC = () => {
   };
 
   const handleStartBackup = () => {
-    window.electronAPI.sendToPython("action:startEligibleBackups");
+    window.electronAPI.sendToPython({ ipc_type: "action", msg: "startBackup" });
     console.log("Starting backup process");
   };
 
   const handleStopBackup = () => {
-    window.electronAPI.sendToPython("action:stopBackups");
+    window.electronAPI.sendToPython({ ipc_type: "action", msg: "stopBackup" });
     console.log("Stopping backup process");
   };
 

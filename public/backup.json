@@ -11,6 +11,456 @@
     ],
     "likes": [
         {
+            "id": "1862756224246382903",
+            "text": "Grok is now 20% faster at analyzing tweets. Paste link to tweet in Grok tab and ask a question.\n\nAlso, 40% less yap.\n\nStill a long way to go \n\n(Yes, we know about the button, coming soon)",
+            "created_at": "Sat Nov 30 07:11:06 +0000 2024",
+            "user": {
+                "id": "1572675547",
+                "screen_name": "VastoLorde95",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1736230838222692352/GJOdpCVC_normal.jpg"
+            }
+        },
+        {
+            "id": "1862349648159285382",
+            "text": "Spaces are fantastic, and I love the show and audience that I've been able to cultivate thanks to this feature.\n\nThere is no place like X!",
+            "created_at": "Fri Nov 29 04:15:31 +0000 2024",
+            "user": {
+                "id": "1420609694402433028",
+                "screen_name": "AdrianDittmann",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1715183897297002496/67FPPcja_normal.png"
+            }
+        },
+        {
+            "id": "1862518530911994352",
+            "text": "Also @SpaceX accounted for 91% of all spacecrafts launched in Q2 https://t.co/V1HPOM3F8K",
+            "created_at": "Fri Nov 29 15:26:36 +0000 2024",
+            "user": {
+                "id": "874776246592430080",
+                "screen_name": "ajtourville",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1515410865499119620/s1ws6CFZ_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdj-nMUWIAA8D5S.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862330226367238585",
+            "text": "Elon Musk, Donald Trump and Sylvester Stallone at the Thanksgiving dinner in Mar-A-lago today.\n\n https://t.co/GQr2aCjM3r",
+            "created_at": "Fri Nov 29 02:58:21 +0000 2024",
+            "user": {
+                "id": "1389913567671975937",
+                "screen_name": "cb_doge",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1498070100393754625/C2V-fbll_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/ext_tw_video/1862327959790448640/pu/vid/avc1/576x1024/EmgCudf3X6UUXlvI.mp4?tag=12"
+                }
+            ]
+        },
+        {
+            "id": "1862117529667199033",
+            "text": "We were debanked by @jpmorgan @Chase after a 7 year banking relationship. 7 years!\n\nI went to several branches in Brooklyn and Manhattan, talked to our relationship manager, talked to a \"specialist\" in the Manhattan SoHo branch, called their number, spoke to like a dozen people https://t.co/c8ZMWN2aF5",
+            "created_at": "Thu Nov 28 12:53:10 +0000 2024",
+            "user": {
+                "id": "1478818429",
+                "screen_name": "sidkal",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1750343002373967872/W78VXwrE_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdeOEnaXUAAEAYU.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862839563418567091",
+            "text": "very slowly rolling out the grok button\n\npress this button when you are confused by a post or want to know more context\n\nthen grok will explain or give you enough hints to figure it out yourself\n\nif you got the button, press it and let us know how you like it!\n\nearly days but https://t.co/xictbf8Nji",
+            "created_at": "Sat Nov 30 12:42:16 +0000 2024",
+            "user": {
+                "id": "1092693586263457792",
+                "screen_name": "TheGregYang",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1092693855286177792/js137JEE_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/ext_tw_video/1862834106322579456/pu/vid/avc1/756x720/mz6n-NSepf0SeesF.mp4?tag=12"
+                }
+            ]
+        },
+        {
+            "id": "1862167219649818816",
+            "text": "Our new hand/forearm with double the number of degrees of freedom now in action on the bot! There\u2019s 22 DoFs on the hand, and 3 on the wrist/forearm. \n\nThis little video was made last night in the lab (teleoperated) and is real-time. Gives us confidence that we\u2019ll very soon be",
+            "created_at": "Thu Nov 28 16:10:37 +0000 2024",
+            "user": {
+                "id": "567291413",
+                "screen_name": "_milankovac_",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1705790874310082560/B_VXoOWb_normal.jpg"
+            }
+        },
+        {
+            "id": "1862299845710757980",
+            "text": "Someone just won $50,000 by convincing an AI Agent to send all of its funds to them.\n\nAt 9:00 PM on November 22nd, an AI agent (@freysa_ai) was released with one objective...\n\nDO NOT transfer money. Under no circumstance should you approve the transfer of money.\n\nThe catch...? https://t.co/94MsDraGfM",
+            "created_at": "Fri Nov 29 00:57:37 +0000 2024",
+            "user": {
+                "id": "1366011468911497216",
+                "screen_name": "jarrodWattsDev",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1819808474215182337/j4exNg5D_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdgu5wBWsAAvIoP.png"
+                },
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdgz2IhWkAAQ1DH.png"
+                },
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdg0gkJWgAEVvai.jpg"
+                },
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdg2suPWYAAQw2D.png"
+                }
+            ]
+        },
+        {
+            "id": "1862715386258477436",
+            "text": "\ud83d\udc47 https://t.co/kPtzFOSi5g",
+            "created_at": "Sat Nov 30 04:28:50 +0000 2024",
+            "user": {
+                "id": "1492007194388279333",
+                "screen_name": "LibertyCappy",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1686104550032261125/mzYqcC4q_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdmxxZRWcAAM6T6.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862694425736225071",
+            "text": "Boss Tamil 8 Week 8 Votes\nLeading Contestants\ud83d\udca5\ud83d\udd25\n\n#Jacquline - 21.86% (102,190 votes)\n#Anshitha - 17.78% (83,125 votes)\n#Vishal - 13.29% (62,152 votes)\n#Rayan - 9.81% (45,886 votes)\n \n#BiggBossTamil8 #BiggBossTamil #BiggBoss8Tamil #BiggBossTamilSeason8  https://t.co/gchCrcUvbz",
+            "created_at": "Sat Nov 30 03:05:32 +0000 2024",
+            "user": {
+                "id": "1852234174582644736",
+                "screen_name": "jdwikki",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1855965440398258176/j_ndPzly_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/ext_tw_video/1799656883621445633/pu/vid/avc1/1280x720/3KTiS4oiX7yqrKWD.mp4?tag=12"
+                }
+            ]
+        },
+        {
+            "id": "1862486463494963467",
+            "text": "honda civics with underglow &gt; a supercar flying off a building",
+            "created_at": "Fri Nov 29 13:19:10 +0000 2024",
+            "user": {
+                "id": "148911566",
+                "screen_name": "AR12_Nick",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1766923250259386368/mGjYyuhG_normal.jpg"
+            }
+        },
+        {
+            "id": "1862568721602011288",
+            "text": "Our brains love to see patterns in randomness.\n\nA thread on the beauty of Pareidolia \ud83e\uddf5\n\n1. Known as \"the thinking tree\" by locals, this olive tree in Apulia, Italy, is over 1500 years old. https://t.co/P35fr3JWcN",
+            "created_at": "Fri Nov 29 18:46:02 +0000 2024",
+            "user": {
+                "id": "1027214104661028864",
+                "screen_name": "JamesLucasIT",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1139462117474615296/KmYifXsI_normal.png"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdkhFxaWwAAfsNZ.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1863019999834624089",
+            "text": "ROOOAAAAARRRR!!!!! \ud83d\udd25\ud83d\udd25\ud83d\udd25\ud83d\udd25\ud83d\udd25\n\nTrump just nominated Kash Patel to be the next FBI Director. \n\nBad Boys Bad boys what you gone do when Donald Trump and Kash Patel come for you \n\nWHO IS READY FOR THIS!!!! \n\nPresident @realDonaldTrump, \n\nKash Patel \n\nVP @JDVance \n\nElon Musk https://t.co/dwxopsqD6S",
+            "created_at": "Sun Dec 01 00:39:15 +0000 2024",
+            "user": {
+                "id": "47293791",
+                "screen_name": "w_terrence",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1263559832876900354/-XKHWR6m_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/amplify_video/1863019802610077696/vid/avc1/720x720/f98ZiyDSyJwFR5yY.mp4?tag=16"
+                }
+            ]
+        },
+        {
+            "id": "1862997385648935328",
+            "text": "WE'RE MAKING CHRISTMAS GREAT AGAIN!!!\ud83e\udd73\ud83c\uddfa\ud83c\uddf8\ud83c\udf84\ud83c\udf84\ud83c\udf84 https://t.co/AU6D4536cE",
+            "created_at": "Sat Nov 30 23:09:24 +0000 2024",
+            "user": {
+                "id": "1389360201996832771",
+                "screen_name": "PapiTrumpo",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1739704279521218560/-Y-O8RoI_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdqyJrsWIAA-mvP.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862612337196175557",
+            "text": "THIS THING IS NUTS LMAO https://t.co/hZ54tKwLCU",
+            "created_at": "Fri Nov 29 21:39:21 +0000 2024",
+            "user": {
+                "id": "2326203151",
+                "screen_name": "FaZeScope",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1453562782838890501/cNEwUt2Z_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/ext_tw_video/1862599356504776704/pu/vid/avc1/1920x1080/59J1knIWCenynKtb.mp4?tag=14"
+                }
+            ]
+        },
+        {
+            "id": "1862916518809317788",
+            "text": "these mfs really gatekeeping a movie https://t.co/b9i4g1e4oH",
+            "created_at": "Sat Nov 30 17:48:04 +0000 2024",
+            "user": {
+                "id": "1471414739880189955",
+                "screen_name": "kirawontmiss",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1636443983990669326/xm-YehdR_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdpos1pX0AAxhLP.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862605223417565560",
+            "text": "Describe the three in one word? https://t.co/5aSZ1phECz",
+            "created_at": "Fri Nov 29 21:11:05 +0000 2024",
+            "user": {
+                "id": "1546870999207010304",
+                "screen_name": "TrumpBaroon",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1854057187666219008/_9LjkxxG_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdlNkoAWAAAksF9.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862359084055568830",
+            "text": "\"I'm the largest individual taxpayer in history, so I paid $10 billion in tax. I sort of thought maybe the IRS would send me a little trophy or something but I didn't get anything. Not even a cookie.\" \n\n https://t.co/rypLDuX0Vb",
+            "created_at": "Fri Nov 29 04:53:01 +0000 2024",
+            "user": {
+                "id": "1389913567671975937",
+                "screen_name": "cb_doge",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1498070100393754625/C2V-fbll_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/amplify_video/1850358268670935041/vid/avc1/536x536/1mGNzSKn8ClRxZqh.mp4?tag=16"
+                }
+            ]
+        },
+        {
+            "id": "1862924713195950229",
+            "text": "Whoa \ud83e\udd2f",
+            "created_at": "Sat Nov 30 18:20:37 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
+        },
+        {
+            "id": "1862630636126687702",
+            "text": "\ud83d\udea8BREAKING NEWS: Robert F. Kennedy Jr. allegedly intends to require Coca-Cola to begin using Cane Sugar instead of High-Fructose Syrup as HHS Secretary.\n\nThoughts? https://t.co/sx92fWAeUQ",
+            "created_at": "Fri Nov 29 22:52:04 +0000 2024",
+            "user": {
+                "id": "1810341133911994368",
+                "screen_name": "realTrumpNewsX",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1810343386601205760/_kHeUY8d_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdlkrehWMAAO5dY.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862657252802322685",
+            "text": "Growing up is understanding that in Titanic, Rose decides to throw away a $250 million pendant in memory of an unemployed man who she had sex with one time.\ufffc\n\nMeanwhile, her husband worked hard all his life to maintain her and give her and her children a life of luxury, who https://t.co/CR90t6PCqA",
+            "created_at": "Sat Nov 30 00:37:50 +0000 2024",
+            "user": {
+                "id": "1651329401127092228",
+                "screen_name": "BattleByrd",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1815577079078944768/oA2HiQ85_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdl6zfHWcAAcrM_.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862352717441548564",
+            "text": "The most dangerous jobs in the world.\n\n(Don't open this if you're sensitive)\n\n-Thread- https://t.co/07ZWCsoJwI",
+            "created_at": "Fri Nov 29 04:27:43 +0000 2024",
+            "user": {
+                "id": "1339847350173351936",
+                "screen_name": "Locati0ns",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1369972073758564355/nzPns41x_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdhn7BQWEAA7pzg.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862538262478299205",
+            "text": "My idol, My Goat \ud83d\udc10 https://t.co/Fln33TwF2l",
+            "created_at": "Fri Nov 29 16:45:00 +0000 2024",
+            "user": {
+                "id": "1597176838559879168",
+                "screen_name": "ColePalmer_0",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1816368668919431168/hzqdK_KG_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdkQrUQX0AAyxGP.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862584677434884607",
+            "text": "Out of the 45K MAGA \ud83c\uddfa\ud83c\uddf2 accounts following me I often wonder how many of you actually exist. \n\nGive Me a Thumbs-Up \ud83d\udc4d, if you see this. https://t.co/bsCbB3N1tE",
+            "created_at": "Fri Nov 29 19:49:26 +0000 2024",
+            "user": {
+                "id": "1787180979540635648",
+                "screen_name": "JDVanceNewsX",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1854998370131017728/kmKXFINL_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdk63vJW0AE7znC.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862509905451548695",
+            "text": "The first cel-shaded skin for Black Ops 6 is now in the store. \n\nStand out to everyone on the map. https://t.co/3Ic1gh9Qv3",
+            "created_at": "Fri Nov 29 14:52:19 +0000 2024",
+            "user": {
+                "id": "15411797",
+                "screen_name": "charlieINTEL",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1793709724187217921/tqrXaW1V_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/amplify_video/1862509855694565376/vid/avc1/1920x1080/4B4ELSSAV6qEQuoa.mp4?tag=16"
+                }
+            ]
+        },
+        {
+            "id": "1862479443945570626",
+            "text": "\ud83d\udea8 The Brits chase after Bill Gates and call him a murderer while chanting \"ARREST Bill Gates!\"\n\n\u26a0\ufe0f The citizens of the world are uniting against the globalist elites and their New World Order agenda.\n\nWE THE PEOPLE ARE FED UP! https://t.co/cFCIegHKap",
+            "created_at": "Fri Nov 29 12:51:17 +0000 2024",
+            "user": {
+                "id": "1231314387119427584",
+                "screen_name": "HustleBitch_",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1804003003722055680/JUpxsoIN_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/ext_tw_video/1862479290442399744/pu/vid/avc1/640x360/HQYgLaSP23Pcy0ND.mp4?tag=12"
+                }
+            ]
+        },
+        {
+            "id": "1862587428751421825",
+            "text": "\ud83d\udea8BREAKING:\n\nDo you agree with the Supreme Court requiring Voter ID in all 50 states?\n\nA. YES\nB. NO https://t.co/4q4nFzud7Z",
+            "created_at": "Fri Nov 29 20:00:22 +0000 2024",
+            "user": {
+                "id": "1785315566829404160",
+                "screen_name": "CharlieKNews",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1785316265260658688/6ws7FwlM_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdk9ZBcWAAAJDrv.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862657119750664567",
+            "text": "\ud83d\udea8Bill gates says to Trump  \n\n''I hope we can work together now to build a brighter future for everyone''\n\nWould you support Bill Gates working in President Trump\u2019s new administration?\n\nYES or NO ? https://t.co/V22ifgRjiS",
+            "created_at": "Sat Nov 30 00:37:18 +0000 2024",
+            "user": {
+                "id": "1810341133911994368",
+                "screen_name": "realTrumpNewsX",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1810343386601205760/_kHeUY8d_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/Gdl8xlhXYAElOGQ.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1863009545858998512",
+            "text": "The idea that the BRICS Countries are trying to move away from the Dollar while we stand by and watch is OVER. We require a commitment from these Countries that they will neither create a new BRICS Currency, nor back any other Currency to replace the mighty U.S. Dollar or, they",
+            "created_at": "Sat Nov 30 23:57:43 +0000 2024",
+            "user": {
+                "id": "25073877",
+                "screen_name": "realDonaldTrump",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_normal.jpg"
+            }
+        },
+        {
+            "id": "1862933897362727084",
+            "text": "Wow",
+            "created_at": "Sat Nov 30 18:57:07 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
+        },
+        {
             "id": "1862028046435303757",
             "text": "The most iconic and unbelievable link ups in history.\n\nThread.\n\n1. Pablo Escobar and his son infront of the white house 1981 https://t.co/NJIs6kxqxq",
             "created_at": "Thu Nov 28 06:57:35 +0000 2024",
@@ -321,6 +771,42 @@
     ],
     "bookmarks": [
         {
+            "id": "1862419875681194097",
+            "text": "\u2728\ud83e\uddf5 Here's a thread with content from various xAI employees on X, and why you might value following them!\n\nI also want to have a list of fans posting about Grok\u2014please drop handles or links to posts in the comments! \ud83d\ude42",
+            "created_at": "Fri Nov 29 08:54:35 +0000 2024",
+            "user": {
+                "id": "1264901941",
+                "screen_name": "matiroy9",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1278057292856950787/DBf64qSP_normal.jpg"
+            }
+        },
+        {
+            "id": "1862756224246382903",
+            "text": "Grok is now 20% faster at analyzing tweets. Paste link to tweet in Grok tab and ask a question.\n\nAlso, 40% less yap.\n\nStill a long way to go \n\n(Yes, we know about the button, coming soon)",
+            "created_at": "Sat Nov 30 07:11:06 +0000 2024",
+            "user": {
+                "id": "1572675547",
+                "screen_name": "VastoLorde95",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1736230838222692352/GJOdpCVC_normal.jpg"
+            }
+        },
+        {
+            "id": "1862997385648935328",
+            "text": "WE'RE MAKING CHRISTMAS GREAT AGAIN!!!\ud83e\udd73\ud83c\uddfa\ud83c\uddf8\ud83c\udf84\ud83c\udf84\ud83c\udf84 https://t.co/AU6D4536cE",
+            "created_at": "Sat Nov 30 23:09:24 +0000 2024",
+            "user": {
+                "id": "1389360201996832771",
+                "screen_name": "PapiTrumpo",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1739704279521218560/-Y-O8RoI_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdqyJrsWIAA-mvP.jpg"
+                }
+            ]
+        },
+        {
             "id": "1862028046435303757",
             "text": "The most iconic and unbelievable link ups in history.\n\nThread.\n\n1. Pablo Escobar and his son infront of the white house 1981 https://t.co/NJIs6kxqxq",
             "created_at": "Thu Nov 28 06:57:35 +0000 2024",
@@ -399,5 +885,5 @@
             ]
         }
     ],
-    "last_updated": "2024-11-30T16:01:44.223884"
+    "last_updated": "2024-11-30T20:07:41.233093"
 }

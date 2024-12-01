@@ -20,6 +20,7 @@ function App() {
 
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [messages, setMessages] = useState<string[]>([]);
 
   const correctPassword = "YellowstonePark";
 
@@ -31,6 +32,20 @@ function App() {
       setPassword("");
     }
   };
+
+  useEffect(() => {
+    // Listen for data from Python
+    window.electronAPI.onPythonData((message: string) => {
+      console.log(`Received from Python: ${message}`);
+      if (message.includes("activity:")) {
+        setMessages((messages) => [...messages, message]);
+      }
+    });
+
+    return () => {
+      window.electronAPI.removePythonDataListener();
+    };
+  }, []);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -63,7 +78,7 @@ function App() {
       };
       loadData();
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, messages]);
 
   const filteredTweets = useMemo(() => {
     if (!data) return [];

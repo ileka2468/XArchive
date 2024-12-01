@@ -101,8 +101,8 @@ const initSocket = () => {
 // Handle messages from the renderer process
 ipcMain.on("to-python", (event, message) => {
   if (ipc_client) {
-    ipc_client.write(message);
-    console.log(`Sent to Python: ${message}`);
+    ipc_client.write(JSON.stringify(message));
+    console.log(`Sent to Python: ${JSON.stringify(message)}`);
   } else {
     console.error("IPC client not initialized.");
   }
