@@ -227,7 +227,7 @@ class TwitterBackupService:
             except Exception as e:
                 self.broker.send_error(f"Error during backup update: {e}")
                 send_pushover_notification("TwitterBackupService Error", f"Error during backup update: {e}", priority=2)
-            await asyncio.sleep(3)
+            await asyncio.sleep(0.5)
 
 async def test_media(bs: TwitterBackupService):
     await bs.login()

@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Play, Pause, PlusCircle, Trash2 } from "lucide-react";
+import { useStatus } from "../context/StatusContext";
 
 const BackupManager: React.FC = () => {
   const [backupName, setBackupName] = useState("");
   const [backups, setBackups] = useState<string[]>([]); // Replace with actual data
-  const [statusMessage, setStatusMessage] = useState("");
-
-  useEffect(() => {
-    // Listen for data from Python
-    window.electronAPI.onPythonData((message: string) => {
-      console.log(`Received from Python: ${message}`);
-      setStatusMessage(message);
-    });
-
-    // Cleanup listener on unmount
-    return () => {
-      window.electronAPI.removePythonDataListener();
-    };
-  }, []);
+  const { statusMessage } = useStatus();
 
   const handleCreateBackup = () => {
     // Logic to create backup folder and backup.json

@@ -3,24 +3,26 @@ import { TwitterBackup } from "./types/twitter";
 import { TweetList } from "./components/TweetList";
 import { SearchBar } from "./components/SearchBar";
 import { BookmarkIcon, Heart, RefreshCw } from "lucide-react";
-import { validateTwitterBackup } from "./utils/jsonValidator";
 import Sidebar from "./components/Sidebar";
 import BackupManager from "./components/BackupManager";
+import { useStatus } from "./context/StatusContext";
+import { validateTwitterBackup } from "./utils/jsonValidator";
 
 type ActiveTab = "media-viewer" | "backup-manager" | "likes" | "bookmarks";
 
 function App() {
   const [data, setData] = useState<TwitterBackup | null>(null);
+  const [cachedData, setCachedData] = useState<TwitterBackup | null>(null);
   const [activeTab, setActiveTab] = useState<ActiveTab>("media-viewer");
   const [subTab, setSubTab] = useState<"likes" | "bookmarks">("likes");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
-
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [messages, setMessages] = useState<string[]>([]);
+  const { statusMessage } = useStatus();
 
   const correctPassword = "YellowstonePark";
 
@@ -33,12 +35,51 @@ function App() {
     }
   };
 
+  const loadData = async (retryCount = 3, retryDelay = 1000) => {
+    try {
+      const res = await fetch("/backup.json");
+      if (!res.ok) {
+        throw new Error("Failed to fetch backup data");
+      }
+      const text = await res.text();
+      let json;
+      try {
+        json = JSON.parse(text);
+      } catch (e) {
+        if (retryCount > 0) {
+          console.log(`Retrying... (${retryCount} attempts left)`);
+          setTimeout(() => loadData(retryCount - 1, retryDelay), retryDelay);
+          return;
+        } else {
+          throw new Error("Failed to parse JSON after multiple attempts");
+        }
+      }
+      const validation = validateTwitterBackup(json);
+      if (!validation.valid) {
+        throw new Error(
+          `Invalid backup format:\n${validation.errors.join("\n")}`
+        );
+      }
+      setData(json);
+      setCachedData(json); // Update the cached data
+      setRetryCount(0); // Reset retry count on success
+    } catch (err: any) {
+      if (retryCount === 0) {
+        setError(err.message);
+      } else {
+        setRetryCount(retryCount - 1);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     // Listen for data from Python
     window.electronAPI.onPythonData((message: string) => {
       console.log(`Received from Python: ${message}`);
       if (message.includes("activity:")) {
-        setMessages((messages) => [...messages, message]);
+        loadData();
       }
     });
 
@@ -49,40 +90,14 @@ function App() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      const loadData = async () => {
-        try {
-          const res = await fetch("/backup.json");
-          if (!res.ok) {
-            throw new Error("Failed to fetch backup data");
-          }
-          const text = await res.text();
-          let json;
-          try {
-            json = JSON.parse(text);
-          } catch (e) {
-            console.error("JSON Parse Error:", e);
-            throw new Error("Invalid JSON format");
-          }
-          const validation = validateTwitterBackup(json);
-          if (!validation.valid) {
-            throw new Error(
-              `Invalid backup format:\n${validation.errors.join("\n")}`
-            );
-          }
-          setData(json);
-        } catch (err: any) {
-          setError(err.message);
-        } finally {
-          setLoading(false);
-        }
-      };
       loadData();
     }
-  }, [isAuthenticated, messages]);
+  }, [isAuthenticated]);
 
   const filteredTweets = useMemo(() => {
-    if (!data) return [];
-    const tweets = data[subTab];
+    const currentData = data || cachedData; // Use cached data if current data is not available
+    if (!currentData) return [];
+    const tweets = currentData[subTab];
     return tweets.filter((tweet) => {
       const matchesUser =
         !selectedUser || tweet.user.screen_name === selectedUser;
@@ -96,7 +111,7 @@ function App() {
 
       return matchesUser && matchesSearch;
     });
-  }, [data, subTab, selectedUser, searchTerm]);
+  }, [data, cachedData, subTab, selectedUser, searchTerm]);
 
   if (!isAuthenticated) {
     return (
@@ -120,7 +135,7 @@ function App() {
     );
   }
 
-  if (loading) {
+  if (loading && !cachedData) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <RefreshCw className="w-8 h-8 animate-spin text-blue-500" />
@@ -128,7 +143,7 @@ function App() {
     );
   }
 
-  if (error || !data) {
+  if (error && !cachedData) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full">
@@ -164,7 +179,8 @@ function App() {
                     }`}
                   >
                     <Heart size={20} />
-                    Likes ({data.likes.length})
+                    Likes ({data?.likes.length || cachedData?.likes.length || 0}
+                    )
                   </button>
                   <button
                     onClick={() => setSubTab("bookmarks")}
@@ -175,7 +191,11 @@ function App() {
                     }`}
                   >
                     <BookmarkIcon size={20} />
-                    Bookmarks ({data.bookmarks.length})
+                    Bookmarks (
+                    {data?.bookmarks.length ||
+                      cachedData?.bookmarks.length ||
+                      0}
+                    )
                   </button>
                 </div>
                 <SearchBar
@@ -190,7 +210,10 @@ function App() {
                 title={`${subTab.charAt(0).toUpperCase() + subTab.slice(1)}`}
               />
               <footer className="text-center text-sm text-gray-500 pt-8">
-                Last updated: {new Date(data.last_updated).toLocaleString()}
+                Last updated:{" "}
+                {new Date(
+                  (data || cachedData)?.last_updated || 0
+                ).toLocaleString()}
               </footer>
             </main>
           </div>
