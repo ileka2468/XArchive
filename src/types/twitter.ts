@@ -1,10 +1,11 @@
 export interface TwitterUser {
   id: string;
   screen_name: string;
+  profile_image_url: string;
 }
 
 export interface MediaDownloadLink {
-  type: 'photo' | 'video';
+  type: "photo" | "video";
   url: string;
 }
 

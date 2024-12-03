@@ -1,4 +1,4 @@
-import { TwitterBackup, Tweet } from "../types/twitter";
+import { TwitterBackup } from "../types/twitter";
 
 export function validateTwitterBackup(data: unknown): {
   valid: boolean;
@@ -14,17 +14,17 @@ export function validateTwitterBackup(data: unknown): {
   const backup = data as Partial<TwitterBackup>;
 
   // Debug log the received data structure
-  console.log("Received data structure:", {
-    followingType: Array.isArray(backup.following)
-      ? "array"
-      : typeof backup.following,
-    likesType: Array.isArray(backup.likes) ? "array" : typeof backup.likes,
-    bookmarksType: Array.isArray(backup.bookmarks)
-      ? "array"
-      : typeof backup.bookmarks,
-    lastUpdatedType: typeof backup.last_updated,
-    receivedKeys: Object.keys(backup),
-  });
+  // console.log("Received data structure:", {
+  //   followingType: Array.isArray(backup.following)
+  //     ? "array"
+  //     : typeof backup.following,
+  //   likesType: Array.isArray(backup.likes) ? "array" : typeof backup.likes,
+  //   bookmarksType: Array.isArray(backup.bookmarks)
+  //     ? "array"
+  //     : typeof backup.bookmarks,
+  //   lastUpdatedType: typeof backup.last_updated,
+  //   receivedKeys: Object.keys(backup),
+  // });
 
   // Check following array
   if (!Array.isArray(backup.following)) {

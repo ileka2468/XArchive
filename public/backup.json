@@ -1,83 +1,204 @@
 {
-  "following": [
-    ["Alice Brown", "alicebrown"],
-    ["Bob Johnson", "bobjohnson"],
-    ["Charlie Davis", "charliedavis"],
-    ["Dana Lee", "danalee"],
-    ["Evan Taylor", "evantaylor"]
-  ],
-  "likes": [
-    {
-      "id": "1",
-      "text": "A stunning view of the Milky Way! 🌌",
-      "created_at": "2023-11-01T08:00:00Z",
-      "user": {
-        "id": "user1",
-        "screen_name": "spaceenthusiast"
-      },
-      "media_download_links": [
+    "following": [
+        [
+            "15411797",
+            "charlieINTEL"
+        ],
+        [
+            "44196397",
+            "elonmusk"
+        ]
+    ],
+    "likes": [
         {
-          "type": "photo",
-          "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Milky_Way_Arch.jpg"
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "text": "Exploring the underwater world. 🐠",
-      "created_at": "2023-11-02T19:30:00Z",
-      "user": {
-        "id": "user2",
-        "screen_name": "divinglife"
-      },
-      "media_download_links": [
+            "id": "1862752132828409961",
+            "text": "You are the media now",
+            "created_at": "Sat Nov 30 06:54:51 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
+        },
         {
-          "type": "photo",
-          "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Coral_reef.jpg"
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "text": "Check out this mesmerizing aurora borealis!",
-      "created_at": "2023-11-03T10:00:00Z",
-      "user": {
-        "id": "user3",
-        "screen_name": "northernlights"
-      },
-      "media_download_links": [
+            "id": "1862836609202225197",
+            "text": "We spent that much afterwards!? Wow.",
+            "created_at": "Sat Nov 30 12:30:32 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
+        },
         {
-          "type": "photo",
-          "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Northern_Lights_%28Aurora_borealis%29.jpg"
-        }
-      ]
-    }
-  ],
-  "bookmarks": [
-    {
-      "id": "4",
-      "text": "This animation explains quantum mechanics really well!",
-      "created_at": "2023-11-05T21:00:00Z",
-      "user": {
-        "id": "user4",
-        "screen_name": "scienceisfun"
-      },
-      "media_download_links": [
+            "id": "1862842627680350492",
+            "text": "You, the people, should decide the narrative, not 3 editors of legacy media",
+            "created_at": "Sat Nov 30 12:54:27 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
+        },
         {
-          "type": "video",
-          "url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/4b/Einstein%27s_relativity_theory_demonstrated.ogv/Einstein%27s_relativity_theory_demonstrated.ogv.480p.webm"
+            "id": "1862908196752368078",
+            "text": "Treyarch dev explains why some movement mechanics in Call of Duty: Black Ops 6 feel slower. https://t.co/Edie0gG2Ot",
+            "created_at": "Sat Nov 30 17:14:59 +0000 2024",
+            "user": {
+                "id": "15411797",
+                "screen_name": "charlieINTEL",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1793709724187217921/tqrXaW1V_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdphH3AWYAAYo4p.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862863808273752083",
+            "text": "True",
+            "created_at": "Sat Nov 30 14:18:36 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
+        },
+        {
+            "id": "1862752573830115448",
+            "text": "https://t.co/RuyJecwbo3",
+            "created_at": "Sat Nov 30 06:56:36 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/amplify_video/1862723416203350016/vid/avc1/1920x1080/uUzl0p2tJlfs9Dn3.mp4?tag=16"
+                }
+            ]
+        },
+        {
+            "id": "1862482881605419310",
+            "text": "It was a coordinated sychological operation \n https://t.co/tNStihsjcU",
+            "created_at": "Fri Nov 29 13:04:56 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/ext_tw_video/1862464845372645376/pu/vid/avc1/1920x1080/pl6LybxR1qxHJW8c.mp4?tag=14"
+                }
+            ]
+        },
+        {
+            "id": "1862451450951213133",
+            "text": "\ud83d\udd25\ud83d\udd25\ud83d\udd25\ud83d\udd25 https://t.co/dXdczXVmN1",
+            "created_at": "Fri Nov 29 11:00:03 +0000 2024",
+            "user": {
+                "id": "1366565625401909249",
+                "screen_name": "WallStreetMav",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1482179968083836928/7prxRZ4M_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdifXf-XcAAwjB1.png"
+                }
+            ]
+        },
+        {
+            "id": "1862747598693552633",
+            "text": "Nope",
+            "created_at": "Sat Nov 30 06:36:50 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
+        },
+        {
+            "id": "1862849322200498372",
+            "text": "Not good",
+            "created_at": "Sat Nov 30 13:21:03 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
+        },
+        {
+            "id": "1862933897362727084",
+            "text": "Wow",
+            "created_at": "Sat Nov 30 18:57:07 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
+        },
+        {
+            "id": "1862889614060515384",
+            "text": "5 days till Citadelle Des Morts. https://t.co/PIJotPCMH3",
+            "created_at": "Sat Nov 30 16:01:09 +0000 2024",
+            "user": {
+                "id": "15411797",
+                "screen_name": "charlieINTEL",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1793709724187217921/tqrXaW1V_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "photo",
+                    "url": "https://pbs.twimg.com/media/GdpQOmtW0AASddc.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1862633099906937251",
+            "text": "Forward this video to friends &amp; family to understand just how evil the government has been\n https://t.co/XgRnikMK6J",
+            "created_at": "Fri Nov 29 23:01:51 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            },
+            "media_download_links": [
+                {
+                    "type": "video",
+                    "url": "https://video.twimg.com/amplify_video/1861853430517579777/vid/avc1/1920x1080/YmeDAzbXTa4-gd2_.mp4?tag=16"
+                }
+            ]
+        },
+        {
+            "id": "1862835730948456462",
+            "text": "Strange how legacy \u201cmainstream\u201d media all say the same thing at the same time \ud83e\udd14",
+            "created_at": "Sat Nov 30 12:27:02 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
         }
-      ]
-    },
-    {
-      "id": "5",
-      "text": "Here’s a guide to making homemade sourdough bread.",
-      "created_at": "2023-11-06T10:30:00Z",
-      "user": {
-        "id": "user5",
-        "screen_name": "bakingtips"
-      }
-    }
-  ],
-  "last_updated": "2023-11-15T12:00:00Z"
+    ],
+    "bookmarks": [
+        {
+            "id": "1862752132828409961",
+            "text": "You are the media now",
+            "created_at": "Sat Nov 30 06:54:51 +0000 2024",
+            "user": {
+                "id": "44196397",
+                "screen_name": "elonmusk",
+                "profile_image_url": "https://pbs.twimg.com/profile_images/1858316737780781056/kPL61o0F_normal.jpg"
+            }
+        }
+    ],
+    "last_pdated": "2021-07-07T14:00:00.000Z",
+    "last_updated": "2024-12-01T13:50:21.530896"
 }

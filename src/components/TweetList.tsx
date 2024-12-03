@@ -1,6 +1,6 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { Tweet as TweetType } from "../types/twitter";
-import { Tweet } from "./Tweet";
+import LazyTweet from "./LazyTweet";
 
 interface TweetListProps {
   tweets?: TweetType[];
@@ -25,9 +25,9 @@ export const TweetList = memo(function TweetList({
   return (
     <section className="space-y-4">
       <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
-      <div className="grid gap-4">
-        {tweets.map((tweet, index) => (
-          <Tweet key={`${tweet.id}-${index}`} tweet={tweet} />
+      <div className="space-y-4">
+        {tweets.map((tweet) => (
+          <LazyTweet key={tweet.id} tweet={tweet} />
         ))}
       </div>
     </section>
