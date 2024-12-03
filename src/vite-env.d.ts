@@ -3,7 +3,9 @@
 interface ElectronAPI {
   sendToPython: (message: IpcPayload) => void;
   onPythonData: (callback: (data: string) => void) => void;
-  removePythonDataListener: () => void;
+  removeAllListeners: (channel: string) => void;
+  getBackups: () => Promise<any>;
+  getMetadata: () => Promise<any>;
 }
 
 type ipc_type = "action" | "activity" | "error";

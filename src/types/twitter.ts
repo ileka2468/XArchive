@@ -5,7 +5,7 @@ export interface TwitterUser {
 }
 
 export interface MediaDownloadLink {
-  type: 'photo' | 'video';
+  type: "photo" | "video";
   url: string;
 }
 

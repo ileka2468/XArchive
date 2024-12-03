@@ -1,3 +1,5 @@
+// main.js
+
 import { app, BrowserWindow, ipcMain } from "electron";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
@@ -5,6 +7,7 @@ import net from "net";
 import { PythonShell } from "python-shell";
 import { dialog } from "electron";
 import path from "path";
+import fs from "fs";
 
 let mainWindow;
 const __filename = fileURLToPath(import.meta.url);
@@ -12,37 +15,67 @@ const __dirname = dirname(__filename);
 let ipc_client;
 console.log("__dirname", __dirname);
 
+ipcMain.handle("get-metadata", async () => {
+  const metadataFile = path.join(__dirname, "metadata.json");
+  if (fs.existsSync(metadataFile)) {
+    const data = fs.readFileSync(metadataFile, "utf-8");
+    return JSON.parse(data);
+  }
+  return {};
+});
+
+ipcMain.handle("get-backups", async () => {
+  const backupsFile = path.join(__dirname, "backups.json");
+  if (fs.existsSync(backupsFile)) {
+    const data = fs.readFileSync(backupsFile, "utf-8");
+    return JSON.parse(data);
+  }
+  return {};
+});
+
+ipcMain.on("send-to-python", (event, arg) => {
+  console.log("Sending to Python:", arg);
+  if (ipc_client && !ipc_client.destroyed) {
+    ipc_client.write(JSON.stringify(arg) + "\n");
+  } else {
+    console.error("Cannot send message, socket is not connected");
+  }
+});
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: path.join(__dirname, "assets", "icon.png"),
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      nodeIntegration: false,
-      contextIsolation: true,
     },
   });
 
-  // mainWindow.loadURL("http://localhost:5173"); // Vite dev server
-  let isDev = true;
-  if (isDev) {
-    mainWindow.loadURL("http://localhost:5173"); // Vite dev server
-  } else {
-    const indexPath = path.join(app.getAppPath(), "dist", "index.html");
-    mainWindow.loadFile(indexPath);
-  }
+  mainWindow.loadURL("http://localhost:5173");
 
   mainWindow.on("closed", () => {
     mainWindow = null;
   });
 }
 
+app.whenReady().then(() => {
+  createWindow();
+  startBackupProcess();
+
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
+
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") app.quit();
+});
+
 const startBackupProcess = () => {
   const options = {
     scriptPath: path.join(__dirname, "backup_process"),
-    pythonOptions: ["-u"], // Unbuffered output
-    env: process.env, // Pass environment variables if needed
+    pythonOptions: ["-u"],
+    env: process.env,
   };
 
   const pyshell = new PythonShell("BackupServiceOrchestrator.py", options);
@@ -50,7 +83,6 @@ const startBackupProcess = () => {
   pyshell.on("message", (message) => {
     console.log(`Python message: ${message}`);
     if (message.includes("Server listening on port")) {
-      // Now that the server is ready, initiate the socket connection
       ipc_client = initSocket();
     }
   });
@@ -76,53 +108,59 @@ const startBackupProcess = () => {
 const initSocket = () => {
   const client = new net.Socket();
 
+  client.connect(12345, "localhost", () => {
+    console.log("Connected to Python backup process");
+  });
+
   client.on("error", (error) => {
     console.error("Socket error:", error);
     dialog.showErrorBox(
       "Connection Error",
-      `Failed to initialize backup process (Python issues?): ${error.message}`
+      `Failed to initialize backup process: ${error.message}`
     );
     app.quit();
   });
 
+  let buffer = "";
+
   client.on("data", (data) => {
-    const message = data.toString();
-    console.log(`Received from Python: ${message}`);
-    // Send the message to the renderer process
-    mainWindow.webContents.send("python-data", message);
+    buffer += data.toString();
+
+    // Split the buffer by newline into complete messages
+    let messages = buffer.split("\n");
+
+    // Keep the last partial message (if any) in the buffer
+    buffer = messages.pop();
+
+    // Process each complete message
+    messages.forEach((message) => {
+      message = message.trim();
+      if (!message) return;
+
+      console.log(`Received from Python: ${message}`);
+
+      // Forward the message to the renderer process
+      if (mainWindow && mainWindow.webContents) {
+        mainWindow.webContents.send("python-data", message);
+      }
+
+      // Handle metadata-updated messages
+      if (message.startsWith("metadata-updated:")) {
+        const metadataData = message.slice("metadata-updated:".length).trim();
+
+        try {
+          const metadata = JSON.parse(metadataData);
+          fs.writeFileSync(
+            path.join(__dirname, "metadata.json"),
+            JSON.stringify(metadata, null, 2),
+            "utf-8"
+          );
+        } catch (err) {
+          console.error("Failed to parse metadata JSON:", err);
+        }
+      }
+    });
   });
 
-  client.connect(12345, "127.0.0.1", () => {
-    console.log("Connected to Python server");
-  });
   return client;
 };
-
-// Handle messages from the renderer process
-ipcMain.on("to-python", (event, message) => {
-  if (ipc_client) {
-    ipc_client.write(JSON.stringify(message));
-    console.log(`Sent to Python: ${JSON.stringify(message)}`);
-  } else {
-    console.error("IPC client not initialized.");
-  }
-});
-
-app.on("ready", () => {
-  startBackupProcess();
-  createWindow();
-});
-
-app.on("window-all-closed", () => {
-  if (ipc_client) {
-    ipc_client.end();
-    ipc_client.destroy();
-  }
-  if (process.platform !== "darwin") app.quit();
-});
-
-app.on("activate", () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
-});

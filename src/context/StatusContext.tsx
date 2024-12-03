@@ -1,38 +1,40 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
+// src/context/StatusContext.tsx
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface StatusContextProps {
-  statusMessage: string;
-  setStatusMessage: (message: string) => void;
+  statusMessages: { [backupId: string]: string };
 }
 
-const StatusContext = createContext<StatusContextProps | undefined>(undefined);
+const StatusContext = createContext<StatusContextProps>({
+  statusMessages: {},
+});
 
 export const StatusProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [statusMessage, setStatusMessage] = useState("");
+  const [statusMessages, setStatusMessages] = useState<{
+    [key: string]: string;
+  }>({});
 
   useEffect(() => {
     window.electronAPI.onPythonData((message: string) => {
-      setStatusMessage(message);
+      if (message.startsWith("event:")) {
+        const parts = message.split(":");
+        const backupId = parts[1];
+        const eventMessage = parts.slice(2).join(":");
+        setStatusMessages((prev) => ({
+          ...prev,
+          [backupId]: eventMessage,
+        }));
+      }
     });
-
-    return () => {
-      window.electronAPI.removePythonDataListener();
-    };
   }, []);
 
   return (
-    <StatusContext.Provider value={{ statusMessage, setStatusMessage }}>
+    <StatusContext.Provider value={{ statusMessages }}>
       {children}
     </StatusContext.Provider>
   );
 };
 
-export const useStatus = () => {
-  const context = useContext(StatusContext);
-  if (!context) {
-    throw new Error("useStatus must be used within a StatusProvider");
-  }
-  return context;
-};
+export const useStatus = () => useContext(StatusContext);
