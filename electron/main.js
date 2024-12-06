@@ -33,6 +33,30 @@ ipcMain.handle("get-backups", async () => {
   return {};
 });
 
+ipcMain.handle("save-settings", async (_, settings) => {
+  try {
+    const settingsFile = path.join(__dirname, "settings.json");
+    fs.writeFileSync(settingsFile, JSON.stringify(settings, null, 2), "utf-8");
+    return { success: true };
+  } catch (err) {
+    console.error("Failed to save settings:", err);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle("get-settings", async () => {
+  const settingsFile = path.join(__dirname, "settings.json");
+  try {
+    if (fs.existsSync(settingsFile)) {
+      const data = fs.readFileSync(settingsFile, "utf-8");
+      return { success: true, settings: JSON.parse(data) };
+    }
+  } catch (err) {
+    console.error("Failed to read settings:", err);
+    return { success: false, error: err.message };
+  }
+});
+
 ipcMain.on("send-to-python", (event, arg) => {
   console.log("Sending to Python:", arg);
   if (ipc_client && !ipc_client.destroyed) {
@@ -44,10 +68,13 @@ ipcMain.on("send-to-python", (event, arg) => {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
+    icon: path.join(__dirname, "assets", "icon2.png"),
     width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: false,
+      contextIsolation: true,
     },
   });
 
@@ -72,10 +99,15 @@ app.on("window-all-closed", () => {
 });
 
 const startBackupProcess = () => {
+  const { syncRate, backupDirectory } = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "settings.json"), "utf-8")
+  );
+
   const options = {
     scriptPath: path.join(__dirname, "backup_process"),
     pythonOptions: ["-u"],
     env: process.env,
+    args: [syncRate, backupDirectory],
   };
 
   const pyshell = new PythonShell("BackupServiceOrchestrator.py", options);

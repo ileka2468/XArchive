@@ -7,4 +7,6 @@ contextBridge.exposeInMainWorld("electronAPI", {
   removeAllListeners: (channel) => ipcRenderer.removeAllListeners(channel),
   getBackups: () => ipcRenderer.invoke("get-backups"),
   getMetadata: () => ipcRenderer.invoke("get-metadata"),
+  saveSettings: (settings) => ipcRenderer.invoke("save-settings", settings),
+  getSettings: () => ipcRenderer.invoke("get-settings"),
 });

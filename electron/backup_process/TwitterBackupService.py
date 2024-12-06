@@ -180,7 +180,10 @@ class TwitterBackupService:
             self.broker.send_error(f"Failed to fetch bookmarks: {e}")
             send_pushover_notification("TwitterBackupService Error", f"Failed to fetch bookmarks: {e}", priority=2)
 
-    def tweet_to_dict(self, tweet):
+    def tweet_to_dict(self, tweet: twikit.Tweet, depth=0, max_depth=5):
+        if not tweet or depth > max_depth:
+            return None
+
         tweet_dict = {
             "id": tweet.id,
             "text": tweet.text,
@@ -189,7 +192,8 @@ class TwitterBackupService:
                 "id": tweet.user.id,
                 "screen_name": tweet.user.screen_name,
                 "profile_image_url": tweet.user.profile_image_url
-            }
+            },
+            "quote": self.tweet_to_dict(tweet.quote) if tweet.quote else None,
         }
 
         # Process media

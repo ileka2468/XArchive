@@ -5,8 +5,11 @@ import threading
 import multiprocessing
 from multiprocessing import Process
 import os
+import sys
 
 from TwitterBackupService import TwitterBackupService
+
+DEFAULT_SYNC_RATE_SECS = 60
 
 def run_backup_service(backup_name, credentials, event_queue, backup_dir):
     def event_callback(event_type, message):
@@ -21,6 +24,11 @@ class BackupServiceOrchestrator:
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.backup_service_objects = {}  # {backup_name: (process, event_queue)}
         self.conn = None
+        # load user settings or default settings
+        self.settings = {
+            "syncRate": sys.argv[1] if len(sys.argv) > 1 else DEFAULT_SYNC_RATE_SECS,
+            "backupDir": sys.argv[2] if len(sys.argv) > 2 else None
+        }
 
         # absolute path to the electron directory
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -90,7 +98,7 @@ class BackupServiceOrchestrator:
         else:
             conn.sendall(b"error:Unknown ipc_type\n")
 
-    def start_backup(self, payload, conn):
+    def start_backup(self, payload, conn): # TODO change to create_backup and add a propper start_backup method that starts an existing backup
         try:
             credentials = payload.get("credentials", {})
             backup_name = payload.get("backup_name")
@@ -98,7 +106,7 @@ class BackupServiceOrchestrator:
                 conn.sendall(b"error:Backup name is required\n")
                 return
 
-            backup_dir = os.path.join("backups", backup_name)
+            backup_dir = os.path.join("backups", backup_name) #TODO inject user settings here for backup directory path
             if os.path.exists(backup_dir):
                 conn.sendall(b"error:Backup name already exists\n")
                 return
@@ -109,7 +117,8 @@ class BackupServiceOrchestrator:
                 "backup_name": backup_name,
                 "credentials": {
                     "username": credentials.get("username", ""),
-                    "email": credentials.get("email", "")
+                    "email": credentials.get("email", ""),
+                    "password": credentials.get("password", "")
                 },
                 "status": "Running",
                 "backup_dir": backup_dir

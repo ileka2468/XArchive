@@ -6,6 +6,8 @@ interface ElectronAPI {
   removeAllListeners: (channel: string) => void;
   getBackups: () => Promise<any>;
   getMetadata: () => Promise<any>;
+  saveSettings: (settings) => Promise<saveSettingsResponse>;
+  getSettings: () => Promise<getSettingsResponse>;
 }
 
 type ipc_type = "action" | "activity" | "error";
@@ -17,4 +19,15 @@ interface IpcPayload {
 
 interface Window {
   electronAPI: ElectronAPI;
+}
+
+interface saveSettingsResponse {
+  success: boolean;
+  error?: string;
+}
+
+interface getSettingsResponse {
+  success: boolean;
+  settings?: Settings;
+  error?: string;
 }

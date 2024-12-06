@@ -1,0 +1,9 @@
+{
+  "syncRate": 44,
+  "autoStart": false,
+  "resumeBackups": true,
+  "backupDirectory": "/path/to/default/directory",
+  "notifications": true,
+  "language": "en",
+  "theme": "light"
+}

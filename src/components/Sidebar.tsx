@@ -1,10 +1,12 @@
 // src/components/Sidebar.tsx
 import React from "react";
-import { FileText, Settings } from "lucide-react";
+import { FileText, Settings, LayoutDashboard } from "lucide-react";
 
 interface SidebarProps {
   activeTab: string;
-  setActiveTab: (tab: "media-viewer" | "backup-manager") => void;
+  setActiveTab: (
+    tab: "media-viewer" | "backup-manager" | "app-settings"
+  ) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => (
@@ -32,8 +34,20 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => (
                 : "hover:bg-gray-700"
             }`}
           >
-            <Settings className="mr-2" />
+            <LayoutDashboard className="mr-2" />
             Backup Manager
+          </button>
+        </li>
+
+        <li>
+          <button
+            onClick={() => setActiveTab("app-settings")}
+            className={`flex items-center p-4 w-full text-left ${
+              activeTab === "app-settings" ? "bg-gray-700" : "hover:bg-gray-700"
+            }`}
+          >
+            <Settings className="mr-2" />
+            App Settings
           </button>
         </li>
       </ul>
