@@ -5,10 +5,10 @@ import { SearchBar } from "./components/SearchBar";
 import { BookmarkIcon, Heart, RefreshCw } from "lucide-react";
 import Sidebar from "./components/Sidebar";
 import BackupManager from "./components/BackupManager";
-import { useStatus } from "./context/StatusContext";
 import { validateTwitterBackup } from "./utils/jsonValidator";
+import AppSettings from "./components/AppSettings";
 
-type ActiveTab = "media-viewer" | "backup-manager" | "likes" | "bookmarks";
+type ActiveTab = "media-viewer" | "backup-manager" | "app-settings";
 
 function App() {
   const [data, setData] = useState<TwitterBackup | null>(null);
@@ -22,7 +22,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const { statusMessage } = useStatus();
 
   // state variables for managing backups
   const [metadata, setMetadata] = useState<Record<string, any>>({});
@@ -272,8 +271,10 @@ function App() {
               </div>
             )}
           </div>
-        ) : (
+        ) : activeTab === "backup-manager" ? (
           <BackupManager />
+        ) : (
+          <AppSettings />
         )}
       </div>
     </div>

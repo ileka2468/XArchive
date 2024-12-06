@@ -18,8 +18,7 @@ export const Tweet = memo(function Tweet({ tweet }: TweetProps) {
   return (
     <article className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 hover:border-blue-300 transition-colors">
       <div className="flex items-start gap-3 mb-2">
-  
-         <img
+        <img
           src={tweet.user.profile_image_url}
           alt={`${tweet.user.screen_name}'s profile`}
           className="w-10 h-10 rounded-full"
@@ -40,6 +39,13 @@ export const Tweet = memo(function Tweet({ tweet }: TweetProps) {
           {tweet.media_download_links.map((media, index) => (
             <MediaViewer key={`${tweet.id}-${index}`} media={media} />
           ))}
+        </div>
+      )}
+
+      {tweet.quote && (
+        <div className="bg-gray-100 p-4 rounded-xl mt-4">
+          <h4 className="font-bold text-gray-900">Quoted Tweet</h4>
+          <Tweet tweet={tweet.quote} />
         </div>
       )}
     </article>

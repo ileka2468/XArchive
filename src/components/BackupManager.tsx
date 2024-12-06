@@ -14,10 +14,10 @@ interface Backup {
 const BackupManager: React.FC = () => {
   const [backups, setBackups] = useState<Backup[]>([]);
   const [credentials, setCredentials] = useState({
-    backupName: "",
-    username: "",
+    backupName: Math.random().toString(36).substring(7),
+    username: "Jonderon115335",
     email: "",
-    password: "",
+    password: "Password1234",
   });
   const [error, setError] = useState<string | null>(null);
 
@@ -46,6 +46,7 @@ const BackupManager: React.FC = () => {
             credentials: {
               username: credentials.username,
               email: credentials.email,
+              password: credentials.password,
             },
           },
         ]);
@@ -93,6 +94,7 @@ const BackupManager: React.FC = () => {
   };
 
   const handleStartBackup = () => {
+    // This is actually creating a new backup, not starting a stopped backup rename this to handleCreateBackup
     if (
       !credentials.backupName ||
       !credentials.username ||
@@ -217,7 +219,7 @@ const BackupManager: React.FC = () => {
                 </button>
               ) : (
                 <button
-                  onClick={() => handleStartBackup()}
+                  onClick={() => handleStartBackup()} // TODO - create new mwthod to start backup and rename to create backup, start backup is for resuming stopped backups
                   className="bg-green-500 text-white px-2 py-1 rounded flex items-center gap-1"
                 >
                   <Play size={16} />
